@@ -1,0 +1,27 @@
+﻿@model Marca
+@{
+    ViewData["Title"] = "Eliminar marca: " + Model.Nombre;
+    string imagePath = "/img/°.png".Replace("°", Model.Logo);
+}
+<h2>@ViewData["Title"]</h2>
+<h3>¿Deseas eliminar la marca @Model.Nombre ?</h3>
+<hr />
+<br />
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <img src=@imagePath asp-append-version ="true" />
+            <div class="card-body">
+                <h5 class="card-title">@Model.Nombre</h5>
+                <form asp-action="Eliminar" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="btn btn-danger mr-3">
+                        Eliminar
+                    </button>
+                    <a class="btn btn-info" asp-action="Index">Regresar</a>
+                </form>
+            </div>
+            <h2>@ViewData["Error"]</h2>
+        </div>
+    </div>
+</div>

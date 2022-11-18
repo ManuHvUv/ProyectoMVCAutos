@@ -1,0 +1,30 @@
+﻿@model Linea
+@{
+    ViewData["Title"] = "Eliminar línea: " + Model.Nombre;
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>¿Deseas eliminar la linea @Model.Nombre ?</h3>
+<hr />
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            @*<img src=@imagePath asp-append-version="true" />*@
+            <div class="card-body">
+                <label>Linea</label>
+                <h5 class="card-title">@Model.Nombre</h5>
+                <label>Precio</label>
+                <h4 class="card-title">@Model.Precio.ToString("c")</h4>
+                <label>Marca</label>
+                <h4 class="card-title">@Model.Marca.Nombre</h4>
+                <form asp-action="Eliminar" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="btn btn-danger mr-3">
+                        Eliminar
+                    </button>
+                    <a class="btn btn-info" asp-action="Index">Regresar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

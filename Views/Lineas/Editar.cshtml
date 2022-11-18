@@ -1,0 +1,46 @@
+﻿@model Linea
+@{
+    ViewData["Title"] = "Editar línea: "+ Model.Nombre;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Editar" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="form-label">Nombre de marca</label>
+                <input type="text" class="form-control" id="MarcaName" aria-describedby="MarcaNameHelp" asp-for="Nombre">
+                <div id="MarcaNameHelp" class="form-text">Introduce un nombre para la linea.</div>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input type="text" class="form-control" id="MarcaLogo" aria-describedby="MarcaLogoHelp" asp-for="Precio">
+                <div id="MarcaLogoHelp" class="form-text">Introduce un precio para la linea.</div>
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Marca</label>
+                <select asp-for="MarcaId" class="form-control" asp-items="ViewBag.Marcas" aria-describedby="LineaMarcaHelp">
+                    <option>---Seleccionar Marca---</option>
+                </select>
+                <div id="LineaMarcaHelp" class="form-text">Selecciona una marca.</div>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary mr-3">
+                    Actualizar
+                </button>
+                <a class="btn btn-info" asp-action="Index">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

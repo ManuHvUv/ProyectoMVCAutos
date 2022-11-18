@@ -1,0 +1,38 @@
+﻿@model Marca
+@{
+    ViewData["Title"] = "Agregar marca ";
+
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Agregar" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="form-label">Nombre de marca</label>
+                <input type="text" class="form-control" id="MarcaName" aria-describedby="MarcaNameHelp" asp-for="Nombre">
+                <div id="MarcaNameHelp" class="form-text">Introduce un nombre para la marca.</div>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo" class="control-label"></label>
+                <input type="text" class="form-control" id="MarcaLogo" aria-describedby="MarcaLogoHelp" asp-for="Logo">
+                <div id="MarcaLogoHelp" class="form-text">Introduce una letra del logo para la marca.</div>
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary mr-3">
+                    Agregar
+                </button>
+                <a class="btn btn-info" asp-action="Index">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

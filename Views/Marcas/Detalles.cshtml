@@ -1,0 +1,26 @@
+﻿@model (Marca,List<Linea>)
+@{
+    ViewData["Title"] = "Detalle de marca: " + Model.Item1.Nombre;
+    string imagePath = "/img/°.png".Replace("°", Model.Item1.Logo);
+}
+<h2>@ViewData["Title"]</h2>
+<br />
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <img src=@imagePath asp-append-version="true" />
+            <div class="card-body">
+                <h5 class="card-title" >@Model.Item1.Nombre</h5>
+                <label>Lineas de la marca</label>
+                    <ul>
+                @foreach (Linea lin in Model.Item2)
+                {
+                        <li>@lin.Nombre</li>
+                }
+                </ul>
+                <a asp-action="Index" class="btn btn-primary">Aceptar</a>
+                <a asp-action="Eliminar" asp-route-id="@Model.Item1.Id" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model List<Linea>
+@{
+    ViewData["Title"] = "Listado de líneas";
+}
+
+<h2>@ViewData["Title"]</h2>
+<a type="button" class="btn btn-success btn-sm" asp-action="Agregar"><i class="material-icons">add</i>Nueva linea</a>
+<br />
+<table class="table table-striped">
+    <thead class="bg-success text-white text-center">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Línea</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Linea item in Model)
+        {
+            <tr class="text-center">
+                <th scope="row">@item.Id</th>
+                <td>@item.Nombre</td>
+                <td>@item.Precio.ToString("c")</td>
+                <td>@item.Marca.Nombre</td>
+                <td class="text-center">
+                    <a type="button" asp-action="Editar" asp-route-id="@item.Id" class="iconoVerde">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a type="button" asp-action="Detalles" asp-route-id="@item.Id" class="iconoMorado">
+                        <i class="material-icons">search</i>
+                    </a>
+                    <a type="button" asp-action="Eliminar" asp-route-id="@item.Id" class="iconoRojo">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
